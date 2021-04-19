@@ -1,0 +1,180 @@
+
+<style> 
+
+</style> 
+
+<br /> 
+
+<br /> 
+
+<div class="container"> 
+
+<div class="card"> 
+
+<h5 class="card-header">Hey! </h5> 
+
+<div class="card-body"> 
+
+<h5 class="card-title">Necesitas ayuda?</h5> 
+
+<p class="card-text">Tienes este espacio para contactarte con uno de nosotros,<br /> si necesitas comprender como funciona preciona el botón que está aquí debajo</p> 
+
+<a href="#" class="btn btn-primary">Ayuda</a> 
+
+</div> 
+
+</div> 
+
+<div class="row"> 
+
+<div class="col-lg-3"> 
+
+<br /> 
+
+<br /> 
+
+<br /> 
+
+<input type="text" class="form-control" placeholder="introduce tu nombre" name="name" id="displayname" value="" /> 
+
+</div> 
+
+</div> 
+
+<h3>Deja tu mensaje</h3> 
+
+<div class="row"> 
+
+<ul id="discussion"> 
+
+</ul> 
+
+</div> 
+
+<br /> 
+
+<div class="row"> 
+
+<div class="col-lg-8"> 
+
+<input type="text" class="form-control" id="message" /> 
+
+</div> 
+
+</div> 
+
+<br /> 
+
+<div class="row"> 
+
+<div class="col-lg-4"> 
+
+<input type="text" class="btn btn-danger" id="sendmessage" value="Enviar" /> 
+
+</div> 
+
+</div> 
+
+</div> 
+
+Layout 
+
+<script src="~/Scripts/jquery.signalR-2.2.2.js"></script> 
+
+<script src="/signalr/hubs"></script> 
+
+<script type="text/javascript"> 
+
+$(function () { 
+
+let chat = $.connection.chatHub; 
+
+chat.client.sendChat = function (name, message) { 
+
+let divName = $("<div />").text(name).html(); 
+
+let divMessage = $("<div />").text(message).html(); 
+
+$("#discussion").append("<li><strong>" + divName + "<strong> " + divMessage + "</li>"); 
+
+}; 
+
+let nameOwner = $("displayname"); 
+
+$("#message").focus(); 
+
+$.connection.hub.start().done(function () { 
+
+$("#sendmessage").click(function () { 
+
+let nameOwner = $("#displayname").val(); 
+
+let messageText = $("#message").val(); 
+
+chat.server.send(nameOwner, messageText) 
+
+$("#message").val("").focus(); 
+
+}) 
+
+}) 
+
+}) 
+
+</script> } 
+
+<!DOCTYPE html> 
+
+<html> 
+
+<head> 
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+
+<meta charset="utf-8" /> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>@ViewBag.Title - Mi aplicación ASP.NET</title> @Styles.Render("~/Content/css") @Scripts.Render("~/bundles/modernizr") 
+
+</head> 
+
+<body> 
+
+<header> 
+
+<nav> 
+
+<ul style="color:black;" class="nav nav-pills"> 
+
+<li class="nav-item"> 
+
+<a class="nav-link active" aria-current="page" href="#">Home</a> 
+
+</li> 
+
+<li class="nav-item"> 
+
+<a class="nav-link" href="#">Sobre nosotros</a> 
+
+</li> 
+
+</ul> 
+
+</nav> 
+
+</header> 
+
+<div class="container body-content"> @RenderBody() 
+
+<hr /> 
+
+<footer> <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p> 
+
+</footer> 
+
+</div> 
+
+@Scripts.Render("~/bundles/jquery") @Scripts.Render("~/bundles/bootstrap") @RenderSection("scripts", required: false) 
+
+</body> 
+
+</html> 

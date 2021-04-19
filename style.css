@@ -1,0 +1,119 @@
+h1{
+    color: white; 
+}
+body{
+    margin: 0;
+    padding: 0;
+    background: url(https://wallpapercave.com/wp/wp7864479.png) repeat center top;
+    background-size: cover;
+    height: 100vh;
+    font-size: 22px;
+    color: white;
+}
+label{
+    color: var(--colorTextos);
+    font-size: 16px;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    transition: 0.5s ease all;
+    pointer-events: none;
+    color: rgb(255, 0, 0); 
+}
+button{
+    font-family: 'roboto';
+    background: transparent;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    font-size: 16px;
+    cursor: pointer;
+    width: 80%;
+    margin: 10px auto;
+    border-color: black;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.6);
+}
+.IngresoDeDatos{
+    font-family: sans-serif; 
+    font-size: 18px; 
+    font-weight: 400;
+    font-weight: bold; 
+    color: white; 
+    height: auto;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 10px;
+    border-color: black;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.6);
+}
+form .registros{
+    position: relative;
+    margin: 45px ;
+}
+input{
+    background: transparent;
+    color: #c6c6c6;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--colorTextos);
+}
+input:focus{ 
+    outline: none;
+    color: #5e5d5d;
+}
+input:focus~label,
+input:valid~label{
+    top: -14px;
+    font-size: 12px;
+    color: #2196f3;
+}
+.barra{
+    position: relative;
+    display: block;
+    width: 100%;
+}
+.barra::before{
+    content: "";
+    height: 2px;
+    width: 0%;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(to right, #B06AB3, #4568DC);
+    transition: 0.3s ease width;
+    left: 0;
+}
+input:focus~.barra::before{
+    width: 100%;
+}
+.Errores{
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    color: brown;
+    padding-top: 20px;
+}
+.Nombre{
+    display: none;
+    color: red;
+}
+.Apellido{
+    display: none;
+    color: red;
+}
+.Cedula{
+    display: none;
+    color: red;
+}
+.Correo{
+    display: none;
+    color: red;
+}
